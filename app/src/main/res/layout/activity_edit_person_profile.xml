@@ -226,13 +226,13 @@
                         android:layout_marginBottom="15dp"
                         app:boxStrokeColor="@color/colorAccent"
                         app:hintTextColor="@color/colorAccent"
-                        app:helperText="University Name">
+                        app:helperText="School Name">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/editPersonProfileSchoolName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            tools:text="University Name"
+                            tools:text="School Name"
                             android:inputType="textCapWords"
                             android:drawableStart="@drawable/ic_baseline_school_24"
                             android:drawablePadding="15dp"
