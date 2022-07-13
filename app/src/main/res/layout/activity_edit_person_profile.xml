@@ -233,6 +233,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             tools:text="University Name"
+                            android:inputType="textCapWords"
                             android:drawableStart="@drawable/ic_baseline_school_24"
                             android:drawablePadding="15dp"
                             android:paddingStart="15dp"
