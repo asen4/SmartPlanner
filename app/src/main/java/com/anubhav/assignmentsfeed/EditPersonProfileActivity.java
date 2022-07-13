@@ -312,6 +312,7 @@ public class EditPersonProfileActivity extends AppCompatActivity {
             userMap.put("fullName", revisedFirstNameET + " " + revisedLastNameET);
             userMap.put("profileImage", downloadUrl);
             userMap.put("profileStatus", profileStatus.getText().toString().trim());
+            userMap.put("schoolName", schoolName.getText().toString().trim());
 
         mUsersReference.child(currentUserID).updateChildren(userMap).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
