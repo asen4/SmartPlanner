@@ -56,7 +56,7 @@ public class PersonProfileActivity extends AppCompatActivity {
 
     private CircleImageView profileImage;
     private ImageButton backButton, addImageButton, sendCommentButton;
-    private TextView headerName, fullName, emailAddress, profileStatus, starRatings, howWouldYouRateTheUser, noCommentsYetMessage, myProfessorsOrStudentsHeader, noProfessorsYetMessage, noStudentsYetMessage;
+    private TextView headerName, fullName, emailAddress, schoolName, profileStatus, starRatings, howWouldYouRateTheUser, noCommentsYetMessage, myProfessorsOrStudentsHeader, noProfessorsYetMessage, noStudentsYetMessage;
 
     private AppCompatRatingBar ratingBar;
     private ProgressBar loadingBar;
@@ -104,6 +104,7 @@ public class PersonProfileActivity extends AppCompatActivity {
         profileImage = findViewById(R.id.personProfileImage);
         fullName = findViewById(R.id.personProfileFullName);
         emailAddress = findViewById(R.id.personProfileEmailAddress);
+        schoolName = findViewById(R.id.personSchoolName);
         profileStatus = findViewById(R.id.personProfileStatus);
         starRatings = findViewById(R.id.starRatings);
         ratingBar = findViewById(R.id.ratingBar);
@@ -186,6 +187,7 @@ public class PersonProfileActivity extends AppCompatActivity {
                 String eA = snapshot.child("emailAddress").getValue().toString();
                 String pS = snapshot.child("profileStatus").getValue().toString();
                 String pT = snapshot.child("personType").getValue().toString();
+                String sN = snapshot.child("schoolName").getValue().toString();
 
                 if (pT.equals("Student")) {
                     howWouldYouRateTheUser.setText("How would you rate this student?");
@@ -294,6 +296,7 @@ public class PersonProfileActivity extends AppCompatActivity {
                 emailAddress.setText(eA);
                 profileStatus.setText(pS);
                 headerName.setText(fN + "'s Profile");
+                schoolName.setText(sN);
             }
 
             @Override
@@ -488,8 +491,16 @@ public class PersonProfileActivity extends AppCompatActivity {
                                 String temp = snapshot.child("fullName").getValue().toString();
                                 if (fullName.equals(temp))
                                     professorsViewHolder.fullName.setText("You");
-                                else
+
+                                else {
                                     professorsViewHolder.fullName.setText(fullName);
+
+                                    professorsViewHolder.itemView.setOnClickListener(view -> {
+                                        Intent personProfileIntent = new Intent(PersonProfileActivity.this, PersonProfileActivity.class);
+                                        personProfileIntent.putExtra("personKey", personKey);
+                                        startActivity(personProfileIntent);
+                                    });
+                                }
                             }
 
                             @Override
@@ -543,8 +554,16 @@ public class PersonProfileActivity extends AppCompatActivity {
                                 String temp = snapshot.child("fullName").getValue().toString();
                                 if (fullName.equals(temp))
                                     professorsViewHolder.fullName.setText("You");
-                                else
+
+                                else {
                                     professorsViewHolder.fullName.setText(fullName);
+
+                                    professorsViewHolder.itemView.setOnClickListener(view -> {
+                                        Intent personProfileIntent = new Intent(PersonProfileActivity.this, PersonProfileActivity.class);
+                                        personProfileIntent.putExtra("personKey", personKey);
+                                        startActivity(personProfileIntent);
+                                    });
+                                }
                             }
 
                             @Override
@@ -562,6 +581,12 @@ public class PersonProfileActivity extends AppCompatActivity {
                     public void onCancelled(DatabaseError databaseError) {
 
                     }
+                });
+
+                professorsViewHolder.itemView.setOnClickListener(view -> {
+                    Intent personProfileIntent = new Intent(PersonProfileActivity.this, PersonProfileActivity.class);
+                    personProfileIntent.putExtra("personKey", personKey);
+                    startActivity(personProfileIntent);
                 });
             }
 

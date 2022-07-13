@@ -169,7 +169,8 @@ public class HomeFragment extends Fragment {
                                     }
                                 }
 
-                                mAgendaCalendarView.init(eventList, minDate, maxDate, Locale.getDefault(), mPickerController);
+                                if (mAgendaCalendarView != null)
+                                    mAgendaCalendarView.init(eventList, minDate, maxDate, Locale.getDefault(), mPickerController);
                             }
 
                             @Override

@@ -28,7 +28,7 @@ public class BasicCredentialsActivity extends AppCompatActivity {
 
     private ProgressDialog loadingBar;
     private MaterialButton submitButton;
-    private TextInputEditText textInputEditTextFirstName, textInputEditTextLastName, textInputEditTextEmailAddress, textInputEditTextProfileStatus;
+    private TextInputEditText textInputEditTextFirstName, textInputEditTextLastName, textInputEditTextSchoolName, textInputEditTextEmailAddress, textInputEditTextProfileStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +54,7 @@ public class BasicCredentialsActivity extends AppCompatActivity {
         textInputEditTextEmailAddress = findViewById(R.id.editTextEmailAddress);
         textInputEditTextEmailAddress.setText(emailAddress);
         textInputEditTextEmailAddress.setEnabled(false);
+        textInputEditTextSchoolName = findViewById(R.id.editTextSchoolName);
         textInputEditTextProfileStatus = findViewById(R.id.editTextProfileStatus);
 
         if (currentUserID != null) {
@@ -83,12 +84,14 @@ public class BasicCredentialsActivity extends AppCompatActivity {
 
             String fullName = firstName + " " + lastName;
             profileStatus = textInputEditTextProfileStatus.getText().toString().trim();
+            String schoolName = textInputEditTextSchoolName.getText().toString().trim();
 
             HashMap userMap = new HashMap();
                 userMap.put("fullName", fullName);
                 userMap.put("emailAddress", emailAddress);
                 userMap.put("userID", currentUserID);
                 userMap.put("profileStatus", profileStatus);
+                userMap.put("schoolName", schoolName);
 
             mFullNameToIDReference.child(fullName).child("userID").setValue(currentUserID);
 
@@ -119,10 +122,11 @@ public class BasicCredentialsActivity extends AppCompatActivity {
 
                         final String firstName = textInputEditTextFirstName.getText().toString().trim();
                         final String lastName = textInputEditTextLastName.getText().toString().trim();
+                        final String schoolName = textInputEditTextSchoolName.getText().toString().trim();
                         final String profileStatus = textInputEditTextProfileStatus.getText().toString().trim();
 
                         runOnUiThread(() -> {
-                            if (! firstName.isEmpty() && ! lastName.isEmpty() && ! profileStatus.isEmpty()) {
+                            if (! firstName.isEmpty() && ! lastName.isEmpty() && ! schoolName.isEmpty() && ! profileStatus.isEmpty()) {
                                 submitButton.setBackgroundTintList(ContextCompat.getColorStateList(BasicCredentialsActivity.this, R.color.colorAccent));
                                 submitButton.setEnabled(true);
                             }

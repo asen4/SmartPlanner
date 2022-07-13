@@ -55,7 +55,7 @@ public class EditPersonProfileActivity extends AppCompatActivity {
     private MaterialButton saveButton;
     private ProgressBar profileImageLoadingBar;
     private ProgressDialog loadingBar;
-    private TextInputEditText firstName, lastName, emailAddress, personType, profileStatus, starRatings;
+    private TextInputEditText firstName, lastName, emailAddress, personType, schoolName, profileStatus, starRatings;
     private TextView noProfessorsYetMessage, noStudentsYetMessage, myProfessorsOrStudentsHeader, noCommentsYetMessage;
     private RecyclerView listOfUsers, listOfComments;
 
@@ -156,6 +156,7 @@ public class EditPersonProfileActivity extends AppCompatActivity {
         lastName = findViewById(R.id.editTextLastName);
         emailAddress = findViewById(R.id.editTextEmailAddress);
         personType = findViewById(R.id.editPersonType);
+        schoolName = findViewById(R.id.editPersonProfileSchoolName);
         profileStatus = findViewById(R.id.editPersonProfileStatus);
         starRatings = findViewById(R.id.editPersonProfileRatings);
         noProfessorsYetMessage = findViewById(R.id.noProfessorsYetMessage);
@@ -210,6 +211,7 @@ public class EditPersonProfileActivity extends AppCompatActivity {
                 String emailA = dataSnapshot.child("emailAddress").getValue().toString();
                 String personT = dataSnapshot.child("personType").getValue().toString();
                 String profileS = dataSnapshot.child("profileStatus").getValue().toString();
+                String sN = dataSnapshot.child("schoolName").getValue().toString();
 
                 if (personT.equals("Professor"))
                     myProfessorsOrStudentsHeader.setText("My Students");
@@ -222,6 +224,7 @@ public class EditPersonProfileActivity extends AppCompatActivity {
                 emailAddress.setText(emailA);
                 personType.setText(personT);
                 profileStatus.setText(profileS);
+                schoolName.setText(sN);
 
                 if (! profileI.equals("-1"))
                     Picasso.get().load(profileI).placeholder(R.drawable.ic_baseline_person_black_125).into(profileImage);
