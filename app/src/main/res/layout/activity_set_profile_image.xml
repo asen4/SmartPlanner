@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SetProfileImageActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/topContainer"
+            android:background="@color/colorPrimary"
+            android:padding="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true"
+                android:textSize="24sp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:text="Setting a\nprofile\nimage"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_login_hero"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/topContainer">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cardViewProfileImageInstructions"
+                    android:layout_margin="25dp"
+                    app:cardCornerRadius="25dp"
+                    android:translationZ="25dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/profileImageInstructions"
+                        android:drawableStart="@drawable/ic_outline_info_24"
+                        android:drawablePadding="10dp"
+                        android:text="If you wish to do so, please select your profile image by clicking on the below icon."
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:padding="14dp" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginBottom="25dp"
+                    android:layout_below="@id/cardViewProfileImageInstructions"
+                    app:cardCornerRadius="25dp"
+                    android:translationZ="25dp">
+
+                    <RelativeLayout
+                        android:id="@+id/inputProfileImageLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="25dp">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/setupProfileImage"
+                            android:layout_width="200dp"
+                            android:layout_height="200dp"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/ic_baseline_person_black_200"
+                            android:background="?android:attr/selectableItemBackground" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/profileImageButton"
+                            android:layout_marginTop="6dp"
+                            android:layout_below="@id/setupProfileImage"
+                            android:backgroundTint="@color/colorAccent"
+                            android:text="Not Now"
+                            android:textColor="@android:color/white"
+                            android:textStyle="bold"
+                            android:paddingStart="45dp"
+                            android:paddingEnd="45dp"
+                            android:paddingTop="15dp"
+                            android:paddingBottom="15dp"
+                            android:layout_centerHorizontal="true" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</ScrollView>
